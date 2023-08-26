@@ -49,6 +49,7 @@ func RateLimiter(maxRequestsPerCPU int) fiber.Handler {
 	}
 }
 
+// excluded this functio since go 1.21 has min as built in func
 // Helper function to return the minimum of two integers
 // func min(a, b int) int {
 // 	if a < b {
