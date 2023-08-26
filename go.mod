@@ -1,6 +1,6 @@
 module github.com/francischacko/d4donline
 
-go 1.20
+go 1.21
 
 require (
 	github.com/gofiber/fiber/v2 v2.48.0

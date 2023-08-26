@@ -29,9 +29,9 @@ func GetDataByCountry(c *fiber.Ctx) error {
 	country := c.Params("country")
 	// SQL query with the USE INDEX clause
 	query := `
-        SELECT * FROM offer_companies USE INDEX (idx_country, idx_valid_from, idx_valid_to, idx_flag)
+        SELECT * FROM offer_company  FORCE INDEX (idx_country,idx_valid_from)
         WHERE country = ? AND valid_from <= ? AND valid_to >= ? AND flag = ?
-        ORDER BY position
+        ORDER BY priority
     `
 	rows, err := db.DB.Raw(query, country, time.Now(), time.Now(), 1).Rows()
 	if err != nil {

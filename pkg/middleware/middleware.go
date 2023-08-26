@@ -27,6 +27,7 @@ func RateLimiter(maxRequestsPerCPU int) fiber.Handler {
 		tokensToAdd := int(elapsed.Seconds()) * maxRequestsPerCPU
 
 		// Update the token count with the new tokens
+		// tokens = min(tokens+tokensToAdd, maxRequests)
 		tokens = min(tokens+tokensToAdd, maxRequests)
 
 		// If no tokens are available, return a Too Many Requests response
@@ -49,9 +50,9 @@ func RateLimiter(maxRequestsPerCPU int) fiber.Handler {
 }
 
 // Helper function to return the minimum of two integers
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
+// func min(a, b int) int {
+// 	if a < b {
+// 		return a
+// 	}
+// 	return b
+// }
